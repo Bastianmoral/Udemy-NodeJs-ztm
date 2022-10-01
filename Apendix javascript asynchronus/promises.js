@@ -45,7 +45,7 @@ displayTweets(nombrdeusuarioTweets);
 //Tenemos una fx grabTweets con un primer parametro que es la url del twitter o el handler de twitter. La fx callback después de haber agarrado los tweets es un error y los mismos tweets y si hay un error mostraremos el error. 
 //Pasa lo mismo con lo siguientes grabTweets
  
-grabTweets('twitter/elonmusk', (error, elonTweets) => {
+{/*grabTweets('twitter/elonmusk', (error, elonTweets) => {*/}
 	if(error) {
 		throw Error;
 }
