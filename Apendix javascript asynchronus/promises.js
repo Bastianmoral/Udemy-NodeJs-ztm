@@ -59,12 +59,12 @@ grabTweets('twitter/vitalikbuterin', (error, vitalikTweets) => {
 displayTweets(vitalikTweets)
         }  
     }
-}
+};
 
 
 //Para crear una promesa nueva debiesemos hacer lo siguiente
 
-const promise = new Promise((resolve, reject) => {
+const Promise = new Promise((resolve, reject) => {
 	if(true) {
                 resolve('Stuff Worked');
         } else {
