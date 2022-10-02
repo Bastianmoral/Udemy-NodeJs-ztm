@@ -58,15 +58,14 @@ Promise.all(urls.map(url =>
 
 const getData = async function() {
 	try {
-		const [ users, posts, albums ] = await Promise.all(urls.map(url => 
-    fetch(url).then(resp => resp.json())
-  ))
+		const [users, posts, albums ] = await Promise.all(urls.map(async function(url) { 
+            const response = await fetch(url)
+            return response.json();
+        }));
    console.log('users', users)
    console.log('post', posts)
    console.log('albums', albums)
-
-	
-} catch(err) {
+   } catch(err) {
 	    console.log('error', err)
     }
 }
