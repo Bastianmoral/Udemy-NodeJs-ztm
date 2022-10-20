@@ -27,3 +27,17 @@
 //HTTP RESPONSES.
 //Las respuestas del web server se devidiría en tres partes principales. 
 //HEADERS. Esto puede ser opcional 
+
+
+//SAME ORIGIN POLICIY
+//que es un origen ? cuando vamos a google maps y tecleamos la url, ingresamos la siguiente url 
+//https://wwww.google.com/maps/ El origen es la combinación de tres partes
+//La primera es el protocolo (Https://)
+//La segunda es el HOST (www.google.com)
+//La última sería Port (el cual no se ve al momento de escribir)
+
+//La política de mismo origen es una caracteristica de seguridad del navegador que restringe que es lo que se puede cargar cuadno se esta navegando por páginas de internet 
+//La idea es que si estan en google.com y buscas gmail te metasa gmail y no en otro link que no tiene nada que ver.
+//Es decir que no peudes traer wikipedia estando en gmail
+
+// new commir 
