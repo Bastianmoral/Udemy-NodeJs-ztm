@@ -1,4 +1,4 @@
-const EventEmitter = require('events');
+/* const EventEmitter = require('events');
 const celebrity = new EventEmitter();
 
 // suscribe to celebrity for observer 1
@@ -26,4 +26,4 @@ process.on('exit', (code) => {
 
 celebrity.emit('race', 'win');
 celebrity.emit('race', 'lost');
-celebrity.emit('race win');
+celebrity.emit('race win'); */
