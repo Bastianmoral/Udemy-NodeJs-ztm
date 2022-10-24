@@ -12,7 +12,7 @@ const friends = [
     {
         id: 1, 
         name: 'Sir Isaac Newton'
-    },
+    }, 
     {
         id: 2, 
         name: 'Albert Einstein'
@@ -24,9 +24,20 @@ const friends = [
 // tal cual como vimos en el projecto de los planetas resp y req son steam
 server.on('request', (req, resp) => {
     const items = req.url.split('/');
-        if (items[1] === 'friends'){  
+    //AGREGAR UN NUEVO AMIGO
+        if (req.method === 'POST' && items[1] === 'friends') {
+            req.on('data', (data) => {
+                const friend = data.toString();
+                console.log('Request:', friend);
+                friends.push(JSON.parse(friend));
+            });       
+            req.pipe(resp);
+        } 
+        //AMIGO ESPECIFICO
+            else if (req.method === 'GET' && items[1] === 'friends') {  
             resp.statusCode = 200;
             resp.setHeader('Content-type', 'application/json');
+                //LISTA DE AMIGOS
                 if (items.length === 3) {
                     const friendIndex = Number(items[2]); // tmabién puede ser
 
@@ -34,7 +45,7 @@ server.on('request', (req, resp) => {
                 } else {
                     resp.end(JSON.stringify(friends));
                 }
-        } else if (items[1] === 'messages') {
+        } else if (req.method === 'GET' && items[1] === 'messages') {
             resp.setHeader('Content-Type', 'text/html');
             resp.write('<html>');
             resp.write('<body>');

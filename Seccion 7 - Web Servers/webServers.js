@@ -40,4 +40,8 @@
 //La idea es que si estan en google.com y buscas gmail te metasa gmail y no en otro link que no tiene nada que ver.
 //Es decir que no peudes traer wikipedia estando en gmail
 
-// new commir 
+
+
+// CORS
+// CORS significa "Cross Origin Resource Sharing", es la forma para "relajar" las restricciones 
+// que el same origin policy puso. Por lo que podriamos hacer app que potencialmente spameen diferentes dominion y origines ya que el same origin policiy limita a los navegadores a hablar  
