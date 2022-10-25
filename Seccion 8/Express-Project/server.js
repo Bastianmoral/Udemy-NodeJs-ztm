@@ -11,7 +11,7 @@ const PORT = 3000;
 
 //EJEMPLO DE MIDDLEWARE DEL CURSO 
 app.use((req, res, next) => {
-    //aquí se mide la cnatidad de tiempo que lo temó anode procesar este request en particular. 
+    //aquí se mide la cantidad de tiempo que lo temó anode procesar este request en particular. 
     //Es por esta razon que los valores con postman son diferentes. 
     const start = Date.now();
     next();
