@@ -34,3 +34,10 @@
 //Lo importante a entender del MVC es que este patron de diseño puede ser usado para separar nuestra app en estas tres capas/layers, que interactuan cada una para lograr la accion que el usuario solicita.
 //Separar la app en estas capas permite al código ser más facil de leer, actualizar y mejorar. Ya que cada capa es responsable de solo una cosa.
  
+
+//ROUTER
+//Cuando estás construyendo apps de express grandes a menudo tomaremos ventajas de este concepto llamado Router. 
+//Este se usa para organizar las rutas de nuestra apps en pequeños grupos de rutas.   
+
+// Router es como una mini aplicación. Contiene su propi set de middleware y rutas. Se usa para descomponer nuestra app y hacerla mas modular. 
+// Se puede crear un router escribiendo express.Router 
