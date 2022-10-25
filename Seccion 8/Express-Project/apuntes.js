@@ -41,3 +41,33 @@
 
 // Router es como una mini aplicación. Contiene su propi set de middleware y rutas. Se usa para descomponer nuestra app y hacerla mas modular. 
 // Se puede crear un router escribiendo express.Router 
+
+
+
+//RESTful APIs
+//Como se decide como nombrar a nuestros endpoints o como descomponer nuestra funcionalidad en pequeñas piezas. 
+//Para esto seguiremos REST, que es por lejos el patrón más común y más importante a conocer cuando se contruyen APIs
+//Cuando se construye una API siguiente este patrón de diseño se crea una RESTFUL APIs
+//REST viene de (RE)presentational (S)tate (T)ransfer (Transferencia representacional del estado), la idea original es que se cree un standar de como hablar con los servidores usando protocolo HTTP. 
+//De todas maneras este protocolo se ha cambiado del original, y en estos días una RESTFUL APIs es una guía de buenas practicas que derivan de este concepto REST creado por Roy Fielding.
+
+//La representation y el state ambos se refieren a como el servidor hace que nuestra data esté disponible. 
+//Transfer se refiere a como  se envía de vuelta al usuario está info. 
+//La idea principal de este patrón es utilizar de manera exahustiva los existentes estandares de la web (HTTP, JSON, URL)
+//REST se trata de hacer uso de lo que ya existe en la web de la manera que tenga sentido cuando se contruyan cualquier tipo de app.
+//Los http end points con los cuales nos comunicamos, representan collecciones de datos que fue almacenado por el lado del servidor. 
+
+//Para comunicar las acciones que se deben efectuar en la colección de datos. Usamos GET, POST, PUT y DELETE
+//Esto solo tiene sentido cuando tenemos una estructura de cliente servidor. Donde el cliente, muestra datos e información al usuario y permite a ellos hacer acciones que son enviadas al servidor, donde lee y hace estas acciones. Actualizando la info o data que almacenamos y enviamos de vuelta al cliente. 
+
+//El cliente y el servidor tienen dos distintivos set de responsabilidades. Los dos se preocupan de diferentes  cosas y se comunican entre ellos para lograr hacer el trabajo. 
+//Las request o solicitudes son siempre stateless and catchables. Donde stateless se refiere a que cada solicitud está separada y no conectada a cualquier estado del cliente que no fue incluido en el request. 
+// Por lo que nuestros servers no están siguiendo que solicitud el usuario ha hecho hoy o en el pasado.  Solo se guarda la info de nuestra collections. 
+//Solo se hara seguimiento de la info o data que podemos ver en nuestras collecionas, pero esto es independiente de lo que se ve del front end o del cliente. 
+//Esto significa que el cliente puede abrir un nuevo navegador en una nueva computadora y con la misma exacta solicitud (request), debiese de llegarle la misma info desde el servidor. 
+//Lo contrario a stateless sería una API que trae la info de un usuario en una sesion y  que se va moviendo entre el servidor y las solicitudes. 
+
+//Como nuestros estados los podemos seguir, lo que significa que podemos cachear estas solicitudes al guardar los resultados. 
+
+
+
