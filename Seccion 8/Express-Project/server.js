@@ -1,28 +1,36 @@
 const express = require('express');
 
+const friendController = require('./controllers/friends.controller');
+const messagesController = require('./controllers/messages.controller');
+
+
 const app = express();
 
 const PORT = 3000;
 
-/* app.get('/', (req, res) => {   
-    res.send('Hello')
-}); */
 
-app.get('/', (req, res) => {   
-    res.send({
-        id: 1,
-        name: 'Sir Isaac Newton'
-    });
+//EJEMPLO DE MIDDLEWARE DEL CURSO 
+app.use((req, res, next) => {
+    //aquí se mide la cnatidad de tiempo que lo temó anode procesar este request en particular. 
+    //Es por esta razon que los valores con postman son diferentes. 
+    const start = Date.now();
+    next();
+    const delta = Date.now() - start;
+    console.log(`${req.method} ${req.url} ${delta}ms`);
 });
 
+app.use(express.json());
 
-app.get('/messages', (req, res) => {   
-    res.send('<ul><li>Hello Albert!</li></ul>');
-});
+//CONTROLLERS
 
-app.post('/messages', (req, res) => {
-    console.log('Updating messages...');
-})
+//Agregar un frend
+app.post('/friends', friendController.postFriends);
+//Todos los friends
+app.get('/friends', friendController.getFriends);
+//individual friends
+app.get('/friends/:friendId',friendController.getFriend);
+app.get('/messages', messagesController.getMessages);
+app.post('/messages', messagesController.postMessage);
 
 
 app.listen(PORT, () => {
