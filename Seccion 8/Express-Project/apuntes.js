@@ -70,4 +70,14 @@
 //Como nuestros estados los podemos seguir, lo que significa que podemos cachear estas solicitudes al guardar los resultados. 
 
 
+//CREATE READ UPDATE AND DELETE (CRUD)
+
+//CRUD se refiere a las cuatro operaciones básicas que podemos usar para manejar la info. 
+
+//Create (POST)
+//Read (GET)
+//Update (PUT)
+//Delete (DELETE)
+
+
 
