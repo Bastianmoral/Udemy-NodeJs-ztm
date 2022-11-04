@@ -7,6 +7,10 @@ const messagesRouter = require('./Routes/messages.router')
 
 const app = express();
 
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+
+
 const PORT = 3000;
 
 
@@ -28,6 +32,13 @@ app.use(express.json());
 
 
 //Routes
+
+app.get('/', (req, res) => {
+    res.render('index', {
+        title: 'Montain',
+        caption: 'My Friend in Puente Alto also know as High Bridges',
+    })
+});
 app.use('/friends', friendsRouter);
 app.use('/messages', messagesRouter);
 
