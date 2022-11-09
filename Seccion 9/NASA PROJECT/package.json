@@ -6,7 +6,7 @@
   "scripts": {
     "install-server": "npm install --prefix server",
     "install-client": "npm install --prefix client",
-    "install":"concurrently \"npm run install-server arg\" \"npm run install-client arg\"",
+    "install": "concurrently \"npm run install-server arg\" \"npm run install-client arg\"",
     "server": "npm run watch --prefix server",
     "client": "npm start --prefix client",
     "watch": "concurrently \"npm run server arg\" \"npm run client arg\"",
@@ -15,5 +15,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "morgan": "^1.10.0"
+  }
 }
