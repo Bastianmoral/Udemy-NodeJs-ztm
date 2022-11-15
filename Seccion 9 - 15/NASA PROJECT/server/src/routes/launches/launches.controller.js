@@ -25,7 +25,7 @@ function httpAddNewLaunch(req, res) {
         });
     }
     addNewLunch(launch);
-    return res.status(200).json(launch);
+    return res.status(201).json(launch);
 }
 
 function httpAbortLaunch(req, res) {
