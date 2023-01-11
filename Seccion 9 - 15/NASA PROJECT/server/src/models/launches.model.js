@@ -5,9 +5,9 @@ let latestFlightNumber = 100;
 
 const launch = {
     mission: 'first name exploration',
-    rocket: 'Expolerer name',
+    rocket: 'Explorer name',
     launchDate: new Date('December 27, 2030'),
-    target: 'kepler-422 b',
+    target: 'kepler- 422 b',
     flightNumber: 100,
     customers: ['ZTM','NASA','APLAPLAC'],
     upcoming: true,
