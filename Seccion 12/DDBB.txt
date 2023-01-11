@@ -1,0 +1,14 @@
+Como bien hemos visto anteriormente, podemos generar datos con los códigos que ya hemos visto. Sin embargo,
+estos datos no son almacenados en el tiempo y una vez qeu el servidor se cierra no existe posibilidad de recuperarlos
+y habría qeu volver a generarlos. 
+
+Existen muchos softwares que nos ayudan a que las bases de datos persistan en el tiempo. Entre ellos están PostgrSql, MySQL, SQLite,
+MongoDB, Oracle, MariaDB.
+
+Recuerdas las operaciones CRUD (Create, Read, Update, Delete), estos softwares nos ayudan a tomar ventaja para hacer mejores operaciones 
+con estos parametros. 
+
+Con estos softwares los datos ya no viven en nuestro servidor, si no que en un servidor de base de datos especializado. Que sigue nuestros datos de 
+la manera mas eficiente posible. Nuestro servidor hacer un Query al Servidor de la base de datos para actualizar o acceder a la info. 
+La base de datos le responde con lo que solicitó en el Query sin mas ni menos. 
+
