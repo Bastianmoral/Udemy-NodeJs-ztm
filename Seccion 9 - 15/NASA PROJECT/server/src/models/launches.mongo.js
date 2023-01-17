@@ -17,19 +17,19 @@ const launchesSchema = new mongoose.Schema({
         type: String,
         required: true,
      },
-     target: {
-      type: mongoose.ObjectId,
-      ref: 'Planet'
-     }
+     customers: [String],
 
-    
-    
-    /* mission: 'first name exploration',
-    rocket: 'Explorer name',
-    launchDate: new Date('December 27, 2030'),
-    target: 'kepler- 422 b',
-    flightNumber: 100,
-    customers: ['ZTM','NASA','APLAPLAC'],
-    upcoming: true,
-    success: true, */
-})
+     target: {
+      type: String,
+      required: true,
+     },
+     upcoming: {
+      type: Boolean,
+      required: true,
+     },
+     success: {
+      type: Boolean,
+      required: true,
+      default: true,
+     },
+});
