@@ -3,7 +3,7 @@ const express = require('express');
 
 const {
     httpGetAllPlanets,
-} = require('./planets.controller')
+} = require ('./planets.controller');
 
 const planetsRouter = express.Router();
 
