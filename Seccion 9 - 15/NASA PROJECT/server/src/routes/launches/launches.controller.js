@@ -1,15 +1,15 @@
 const { 
     getAllLaunches, 
-    addNewLunch,
     existsLaunchWithId,
-    abortLaunchById,    
+    abortLaunchById,
+    scheduledNewLaunch,    
 } = require("../../models/launches.model");
 
-function httpGetAllLaunches(req, res) {
-    return res.status(200).json(getAllLaunches());
+async function httpGetAllLaunches(req, res) {
+    return res.status(200).json(await getAllLaunches());
 }
 
-function httpAddNewLaunch(req, res) {
+async function httpAddNewLaunch(req, res) {
     const launch = req.body;
     if (!launch.mission || !launch.rocket || !launch.launchDate
         || !launch.target) {
@@ -24,7 +24,7 @@ function httpAddNewLaunch(req, res) {
             error: 'Invalid launch date',
         });
     }
-    addNewLunch(launch);
+    await scheduledNewLaunch(launch);
     return res.status(201).json(launch);
 }
 
@@ -46,6 +46,4 @@ module.exports = {
     httpAbortLaunch,
 };
 
-
-//4067193 NUMERO DE SCOTIABANK. 
 
