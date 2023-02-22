@@ -1,8 +1,8 @@
 const { 
     getAllLaunches, 
+    scheduledNewLaunch,    
     existsLaunchWithId,
     abortLaunchById,
-    scheduledNewLaunch,    
 } = require("../../models/launches.model");
 
 async function httpGetAllLaunches(req, res) {
@@ -11,6 +11,7 @@ async function httpGetAllLaunches(req, res) {
 
 async function httpAddNewLaunch(req, res) {
     const launch = req.body;
+
     if (!launch.mission || !launch.rocket || !launch.launchDate
         || !launch.target) {
         return res.status(400).json({
@@ -25,7 +26,6 @@ async function httpAddNewLaunch(req, res) {
         });
     }
     await scheduledNewLaunch(launch);
-    console.log(launch);
     return res.status(201).json(launch);
 }
 

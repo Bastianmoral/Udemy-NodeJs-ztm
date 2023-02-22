@@ -17,15 +17,13 @@ const launchesSchema = new mongoose.Schema({
         type: String,
         required: true,
      },
-     customers: [String],
-
      target: {
-      type: String,
-      required: true,
-     },
-     upcoming: {
-      type: Boolean,
-      required: true,
+         type: String,
+      },
+      customers: [ String ],
+      upcoming: {
+         type: Boolean,
+         required: true,
      },
      success: {
       type: Boolean,

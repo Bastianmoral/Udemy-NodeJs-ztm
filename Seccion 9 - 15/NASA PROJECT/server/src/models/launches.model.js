@@ -1,30 +1,32 @@
+const axios = require('axios');
+
 const launchesDatabase = require('./launches.mongo');
 const planets = require('./planets.mongo');
-const axios = require('axios');
 
 const DEFAULT_FLIGHT_NUMBER = 100;
 
 
 const launch = {
-    mission: 'first name exploration',//name
-    rocket: 'Explorer name', //rocket.name
-    launchDate: new Date('December 27, 2030'), //date_local
-    target: 'Kepler-296 A f',//new feature not applicable
-    flightNumber: 100, //flight_number.1
-    customers: ['ZTM','NASA','APLAPLAC'], //payload.costumers por cada payload
-    upcoming: true,//upcoming
-    success: true,//success
+    flightNumber: 100,
+    mission: 'Kepler Exploration X',
+    rocket: 'Explorer IS1',
+    launchDate: new Date('December 27, 2033'),
+    target: 'kepler-442  b',
+    customers: ['ZTM', 'NASA'],
+    upcoming: true,
+    success: true,
 };
 
 saveLaunch(launch);
 
 const SPACEX_API_URL = 'https://api.spacexdata.com/v4/launches/query';
 
-async function loadLaunchData() {
+async function populateLaunches() {
     console.log('Donwloading launch data... ');
     const response = await axios.post(SPACEX_API_URL, {
         query: {},
         options: {
+            pagination: false,
             populate: [
                 {
                     path: 'rocket',
@@ -35,7 +37,7 @@ async function loadLaunchData() {
                 {
                     path: 'payloads',
                     select: {
-                        'costumers': 1
+                        'customers': 1
                     }
                 }
 
@@ -43,12 +45,18 @@ async function loadLaunchData() {
         }
     });
 
+    if (response.status !== 200) {
+        console.log('Problem downloading launch data');
+        throw new Error('Launch data download failed');
+    }
+
     const launchDocs = response.data.docs;
     for (const launchDoc of launchDocs) {
         const payloads = launchDoc['payloads'];
         const customers = payloads.flatMap((payload) => {
             return payload['customers']; 
-        })
+        });
+
         const launch = {
             flightNumber: launchDoc['flight_number'],
             mission: launchDoc['name'],
@@ -60,12 +68,35 @@ async function loadLaunchData() {
         };
 
         console.log(`${launch.flightNumber} ${launch.mission}`);
+        
+        await saveLaunch(launch);
+
+        // TODO: populate Luanches collection....
     }
 }
 
 
+async function loadLaunchData() {
+    const firstLaunch = await findLaunch({
+        flightNumber: 1,
+        rocket: 'Falcon 1',
+        mission: 'FalconSat',
+    });
+     if (firstLaunch) {
+        console.log('Launch data already loaded');
+    } else { 
+        await populateLaunches();
+    
+}
+}
+
+async function findLaunch(filter) {
+    return await launchesDatabase.findOne(filter);
+}
+
+
 async function existsLaunchWithId(launchId) {
-    return await launchesDatabase.findOne({
+    return await findLaunch({
         flightNumber: launchId,
     });
 }
@@ -75,6 +106,7 @@ async function getLatestFlightNumber() {
     const latestLaunch = await launchesDatabase
         .findOne()
         .sort('-flightNumber');
+        
     if (!latestLaunch) {
         return DEFAULT_FLIGHT_NUMBER;
     }
@@ -87,14 +119,6 @@ async function getAllLaunches() {
 }
 
 async function saveLaunch(launch) {
-     const planet = await planets.findOne({
-        keplerName: launch.target, 
-    });
-
-    if (!planet) {
-        throw new Error('No matching planets found')
-    }
- 
     await launchesDatabase.findOneAndUpdate({
         flightNumber: launch.flightNumber, 
     }, launch, {
@@ -103,7 +127,16 @@ async function saveLaunch(launch) {
 }
 
 async function scheduledNewLaunch(launch) {
+    const planet = await planets.findOne({
+        keplerName: launch.target, 
+    });
+
+    if (!planet) {
+        throw new Error('No matching planets found')
+    }
+
     const newFlightNumber = await getLatestFlightNumber() + 1;
+    
     const newLaunch = Object.assign(launch, {
         success: true,
         upcoming: true,
