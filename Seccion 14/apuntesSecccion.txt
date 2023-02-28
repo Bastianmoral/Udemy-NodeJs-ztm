@@ -1,0 +1,39 @@
+Esta sección es sobre seguridad y autenticación.
+
+La idea es evitar que la información desde nuestro código base 
+no esté disponible para los demas usuarios del servidor. 
+
+Para esto se utilizan diferentes tipos de protocolos de seguridad 
+ya establecidos. 
+
+SSL & TLS
+
+TLS es el sucesor del protocolo de seguridad SSL. 
+De todas maneras aún se ocupa el modelo SSL. 
+
+
+SSL 1.0, 2.0, 3.0, 
+TLS 1.0
+
+Con este último lo que se hace es que se tiene el clásico protocolo http 
+que se envuelve en una capa de seguridad y encriptación para que no se vea el contenido del http. 
+
+
+Con los certificados digitales verificamos y certificamos el origen del servidor es confiable. 
+Asi se prevee los ataques "Man in the middle", donde una persona se hace pasar por un servidor para lograr
+tener accesoa información delicada y personal. 
+
+Estos certificados están firmados por una autoridad certificadora, 
+nuestros navegadores o computadores ya confian en esta organizacion
+
+
+
+CDN. CONTENT DELIVERY NETWORK. Son los servicios de Google o Amazon 
+que nos permiten que cualquier servidor automáticamente puede ser cargado
+en una red de despacho contante (CDN).
+De esta manera, la información de los servidores que necesitamos está desde una 
+locación "cercana" y puede ser cargada de una manera rápida y eficiente. 
+
+
+
+createServer() se usa por flexibilidad 
