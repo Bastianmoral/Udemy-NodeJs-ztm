@@ -37,3 +37,43 @@ locación "cercana" y puede ser cargada de una manera rápida y eficiente.
 
 
 createServer() se usa por flexibilidad 
+
+Autenticación vs autorización
+
+Usualmente cuando hacemos una página web queremos que el usuario pueda hacerse
+usuario para poder tener acceso a mejor contenido o contenido más serío. 
+
+autenticación valida que el usuario es quien dice ser. 
+Generalmente con un nombre de usuario y contraseña. 
+Por otro lado, autorización chekea que el usaurio tenga permiso para 
+recursos especificos una vez que el usaurio a sido autenticado.
+
+La autenticación (AUTH) Puede ser por usuario y contraseña, o por valores biometricos (huella dactilar).
+En este ultimo caso se necesitaria una autenticación en dos pasos. Donde se necesita de un codigo secreto 
+para poder acceder. 
+
+Una vez el usuario ya ha sido autenticado, la autorización entra en juego. Ya que esta permite 
+dar o no autorización a acceder a cierto tipo de contenido y cierto que no 
+
+OAuth 2
+
+Es la forma mas comun que se utiliza como sistema de autorizacion de manera global. 
+
+Es un flujo de autorización super utilizado. Ya uqe nos permite utilizar los procesod de autorizacion ya creados por google twiter 
+es para hacer un "SOCIAL SIGN IN".
+
+El flujo de OAuth 2
+
+Tenemos 
+
+Resource Owner, termino fancy para usuario (user), 
+Client, este sería la app web o el sitio. 
+Resource Server , Es el servidor de tu cliente o tu app o sitio web
+Authorization Server, el servidor que autoriza al usaurio quien es. En este caso google (para el ejemplo del video)
+
+La iniciacion de lo que es el flujo parte desde el minuto 3.43 
+
+
+
+
+

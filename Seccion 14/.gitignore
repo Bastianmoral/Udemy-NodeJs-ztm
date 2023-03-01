@@ -4,3 +4,4 @@ package.json
 .DS_Store
 cert.pem
 key.pem
+.env
